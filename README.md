@@ -6,7 +6,21 @@ Flutter desktop/mobile demo.
 
 ## Status
 
-Project scaffolding is in place. Split math, UI, and pubspec will land in follow-up commits.
+Person model and split math helpers are in place. UI and pubspec will land in follow-up commits.
+
+## Module
+
+```dart
+import 'models/person.dart';
+import 'split_math.dart';
+
+final shares = computeShares(
+  people: [Person(name: 'Alex', amount: 40), Person(name: 'Sam', amount: 30)],
+  subtotal: 120,
+  tax: 10,
+  tipPercent: 10,
+);
+```
 
 ## Planned setup
 
