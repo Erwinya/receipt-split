@@ -6,13 +6,20 @@ Flutter desktop/mobile demo.
 
 ## Status
 
-Person model and split math helpers are in place. UI and pubspec will land in follow-up commits.
+Split math helpers, pubspec, and app shell (`main` / `app`) are in place. Split screen UI will land in a follow-up commit.
+
+## Setup
+
+```powershell
+flutter pub get
+flutter run
+```
 
 ## Module
 
 ```dart
-import 'models/person.dart';
-import 'split_math.dart';
+import 'package:receipt_split/models/person.dart';
+import 'package:receipt_split/split_math.dart';
 
 final shares = computeShares(
   people: [Person(name: 'Alex', amount: 40), Person(name: 'Sam', amount: 30)],
@@ -20,14 +27,6 @@ final shares = computeShares(
   tax: 10,
   tipPercent: 10,
 );
-```
-
-## Planned setup
-
-```powershell
-flutter create . --project-name receipt_split
-flutter pub get
-flutter run
 ```
 
 ## License
