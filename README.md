@@ -15,6 +15,9 @@ flutter pub get
 flutter run
 ```
 
+
+Unassigned subtotal remainder is split evenly with tax and tip across all people.
+
 ## Module
 
 ```dart
