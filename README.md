@@ -6,7 +6,7 @@ Flutter desktop/mobile demo.
 
 ## Status
 
-Split math helpers, pubspec, and app shell (`main` / `app`) are in place. Split screen UI will land in a follow-up commit.
+Split math helpers, app shell, and split screen UI are in place. Tests and lint config will land in follow-up commits.
 
 ## Setup
 
