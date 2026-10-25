@@ -6,7 +6,9 @@ Flutter desktop/mobile demo.
 
 ## Status
 
-Split math helpers, app shell, and split screen UI are in place. Tests and lint config will land in follow-up commits.
+Split UI, math helpers, lint config, and unit tests are in place. Final polish lands next.
+
+Unassigned subtotal remainder is split evenly with tax and tip across all people.
 
 ## Setup
 
@@ -15,8 +17,11 @@ flutter pub get
 flutter run
 ```
 
+## Test
 
-Unassigned subtotal remainder is split evenly with tax and tip across all people.
+```powershell
+flutter test
+```
 
 ## Module
 
