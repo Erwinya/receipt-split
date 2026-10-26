@@ -71,11 +71,26 @@ class _SplitScreenState extends State<SplitScreen> {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          TextField(controller: _subtotal, decoration: const InputDecoration(labelText: 'Subtotal', border: OutlineInputBorder()), keyboardType: const TextInputType.numberWithOptions(decimal: true), onChanged: (_) => setState(() {})),
+          TextField(
+            controller: _subtotal,
+            decoration: const InputDecoration(labelText: 'Subtotal', border: OutlineInputBorder()),
+            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+            onChanged: (_) => setState(() {}),
+          ),
           const SizedBox(height: 10),
-          TextField(controller: _tax, decoration: const InputDecoration(labelText: 'Tax', border: OutlineInputBorder()), keyboardType: const TextInputType.numberWithOptions(decimal: true), onChanged: (_) => setState(() {})),
+          TextField(
+            controller: _tax,
+            decoration: const InputDecoration(labelText: 'Tax', border: OutlineInputBorder()),
+            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+            onChanged: (_) => setState(() {}),
+          ),
           const SizedBox(height: 10),
-          TextField(controller: _tipPercent, decoration: const InputDecoration(labelText: 'Tip %', border: OutlineInputBorder()), keyboardType: const TextInputType.numberWithOptions(decimal: true), onChanged: (_) => setState(() {})),
+          TextField(
+            controller: _tipPercent,
+            decoration: const InputDecoration(labelText: 'Tip %', border: OutlineInputBorder()),
+            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+            onChanged: (_) => setState(() {}),
+          ),
           const SizedBox(height: 16),
           Text('People', style: Theme.of(context).textTheme.titleMedium),
           for (var i = 0; i < _people.length; i++)
@@ -84,10 +99,25 @@ class _SplitScreenState extends State<SplitScreen> {
                 padding: const EdgeInsets.all(12),
                 child: Row(
                   children: [
-                    Expanded(child: TextField(controller: _nameCtrls[i], decoration: const InputDecoration(labelText: 'Name'), onChanged: (_) => setState(() {}))),
+                    Expanded(
+                      child: TextField(
+                        controller: _nameCtrls[i],
+                        decoration: const InputDecoration(labelText: 'Name'),
+                        onChanged: (_) => setState(() {}),
+                      ),
+                    ),
                     const SizedBox(width: 8),
-                    SizedBox(width: 110, child: TextField(controller: _amountCtrls[i], decoration: const InputDecoration(labelText: 'Items'), keyboardType: const TextInputType.numberWithOptions(decimal: true), onChanged: (_) => setState(() {}))),
+                    SizedBox(
+                      width: 110,
+                      child: TextField(
+                        controller: _amountCtrls[i],
+                        decoration: const InputDecoration(labelText: 'Items'),
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                        onChanged: (_) => setState(() {}),
+                      ),
+                    ),
                     IconButton(
+                      tooltip: 'Remove person',
                       onPressed: _people.length == 1
                           ? null
                           : () {
@@ -114,13 +144,17 @@ class _SplitScreenState extends State<SplitScreen> {
           Card(
             child: Padding(
               padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Total: ${total.toStringAsFixed(2)}', style: Theme.of(context).textTheme.titleMedium),
-                  const SizedBox(height: 8),
-                  ...result.entries.map((e) => Text('${e.key}: ${e.value.toStringAsFixed(2)}')),
-                ],
+              child: Semantics(
+                liveRegion: true,
+                label: 'Split results',
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Total: ${total.toStringAsFixed(2)}', style: Theme.of(context).textTheme.titleMedium),
+                    const SizedBox(height: 8),
+                    ...result.entries.map((e) => Text('${e.key}: ${e.value.toStringAsFixed(2)}')),
+                  ],
+                ),
               ),
             ),
           ),
