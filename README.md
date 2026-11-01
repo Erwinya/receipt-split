@@ -6,7 +6,7 @@ Flutter desktop/mobile demo.
 
 ## Status
 
-Complete: split math helpers, accessible UI, lint config, and unit tests.
+Complete: split math helpers, accessible UI, lint config, unit tests, and CI. CI workflow included.
 
 Unassigned subtotal remainder is split evenly with tax and tip across all people.
 
