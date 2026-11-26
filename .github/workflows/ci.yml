@@ -15,6 +15,8 @@ jobs:
           channel: stable
       - name: Dependencies
         run: flutter pub get
+      - name: Format
+        run: dart format --output=none --set-exit-if-changed lib test
       - name: Analyze
         run: flutter analyze
       - name: Test

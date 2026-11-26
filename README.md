@@ -6,9 +6,9 @@ Flutter desktop/mobile demo.
 
 ## Status
 
-Complete: split math helpers, accessible UI, lint config, unit tests, and CI. CI workflow included.
+Complete: cent-accurate split math, form validation, accessible live results, unit tests, and CI.
 
-Unassigned subtotal remainder is split evenly with tax and tip across all people.
+Unassigned subtotal remainder is split evenly with tax and tip across all people. Duplicate names stay as separate shares. Assigned item totals cannot exceed the subtotal.
 
 ## Setup
 
@@ -20,6 +20,7 @@ flutter run
 ## Test
 
 ```powershell
+flutter analyze
 flutter test
 ```
 
@@ -29,12 +30,14 @@ flutter test
 import 'package:receipt_split/models/person.dart';
 import 'package:receipt_split/split_math.dart';
 
-final shares = computeShares(
+final result = computeShares(
   people: [Person(name: 'Alex', amount: 40), Person(name: 'Sam', amount: 30)],
-  subtotal: 120,
+  subtotal: 100,
   tax: 10,
   tipPercent: 10,
 );
+print(result.total); // 120.00
+print(result.shares.map((s) => '${s.name}: ${s.amount}'));
 ```
 
 ## License
