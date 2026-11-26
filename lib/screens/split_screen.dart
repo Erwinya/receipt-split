@@ -37,7 +37,8 @@ class _SplitScreenState extends State<SplitScreen> {
       ..addAll(_people.map((p) => TextEditingController(text: p.name)));
     _amountCtrls
       ..clear()
-      ..addAll(_people.map((p) => TextEditingController(text: p.amount == 0 ? '' : p.amount.toString())));
+      ..addAll(_people.map((p) => TextEditingController(
+          text: p.amount == 0 ? '' : p.amount.toString())));
   }
 
   @override
@@ -59,7 +60,9 @@ class _SplitScreenState extends State<SplitScreen> {
 
   void _recompute() {
     for (var i = 0; i < _people.length; i++) {
-      _people[i].name = _nameCtrls[i].text.trim().isEmpty ? 'Guest ${i + 1}' : _nameCtrls[i].text.trim();
+      _people[i].name = _nameCtrls[i].text.trim().isEmpty
+          ? 'Guest ${i + 1}'
+          : _nameCtrls[i].text.trim();
       final amount = _parseOptional(_amountCtrls[i]);
       _people[i].amount = amount ?? 0;
     }
@@ -105,23 +108,32 @@ class _SplitScreenState extends State<SplitScreen> {
           children: [
             TextFormField(
               controller: _subtotal,
-              decoration: const InputDecoration(labelText: 'Subtotal', border: OutlineInputBorder()),
-              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              decoration: const InputDecoration(
+                  labelText: 'Subtotal', border: OutlineInputBorder()),
+              keyboardType:
+                  const TextInputType.numberWithOptions(decimal: true),
               onChanged: (_) => _recompute(),
-              validator: (value) => double.tryParse((value ?? '').trim()) == null ? 'Required number' : null,
+              validator: (value) =>
+                  double.tryParse((value ?? '').trim()) == null
+                      ? 'Required number'
+                      : null,
             ),
             const SizedBox(height: 10),
             TextFormField(
               controller: _tax,
-              decoration: const InputDecoration(labelText: 'Tax', border: OutlineInputBorder()),
-              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              decoration: const InputDecoration(
+                  labelText: 'Tax', border: OutlineInputBorder()),
+              keyboardType:
+                  const TextInputType.numberWithOptions(decimal: true),
               onChanged: (_) => _recompute(),
             ),
             const SizedBox(height: 10),
             TextFormField(
               controller: _tipPercent,
-              decoration: const InputDecoration(labelText: 'Tip %', border: OutlineInputBorder()),
-              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              decoration: const InputDecoration(
+                  labelText: 'Tip %', border: OutlineInputBorder()),
+              keyboardType:
+                  const TextInputType.numberWithOptions(decimal: true),
               onChanged: (_) => _recompute(),
             ),
             const SizedBox(height: 16),
@@ -145,7 +157,8 @@ class _SplitScreenState extends State<SplitScreen> {
                         child: TextField(
                           controller: _amountCtrls[i],
                           decoration: const InputDecoration(labelText: 'Items'),
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                          keyboardType: const TextInputType.numberWithOptions(
+                              decimal: true),
                           onChanged: (_) => _recompute(),
                         ),
                       ),
@@ -188,7 +201,9 @@ class _SplitScreenState extends State<SplitScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       if (_error != null)
-                        Text(_error!, style: TextStyle(color: Theme.of(context).colorScheme.error))
+                        Text(_error!,
+                            style: TextStyle(
+                                color: Theme.of(context).colorScheme.error))
                       else ...[
                         Text(
                           'Total: ${_result!.total.toStringAsFixed(2)}',
@@ -196,7 +211,8 @@ class _SplitScreenState extends State<SplitScreen> {
                         ),
                         const SizedBox(height: 8),
                         ..._result!.shares.map(
-                          (share) => Text('${share.name}: ${share.amount.toStringAsFixed(2)}'),
+                          (share) => Text(
+                              '${share.name}: ${share.amount.toStringAsFixed(2)}'),
                         ),
                       ],
                     ],

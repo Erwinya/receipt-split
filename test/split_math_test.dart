@@ -83,6 +83,7 @@ void main() {
       tax: 0.01,
       tipPercent: 0,
     );
-    expect(result.shares.fold<int>(0, (sum, s) => sum + s.cents), result.totalCents);
+    expect(result.shares.fold<int>(0, (sum, s) => sum + s.cents),
+        result.totalCents);
   });
 }

@@ -38,7 +38,8 @@ SplitResult computeShares({
     }
   }
 
-  final assignedCents = people.fold<int>(0, (sum, p) => sum + toCents(p.amount));
+  final assignedCents =
+      people.fold<int>(0, (sum, p) => sum + toCents(p.amount));
   if (assignedCents > subtotalCents) {
     throw ArgumentError('assigned item amounts exceed subtotal');
   }
